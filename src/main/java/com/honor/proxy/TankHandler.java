@@ -15,7 +15,6 @@ public class TankHandler implements InvocationHandler {
         this.moveAble = moveAble;
     }
 
-    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("代理开始");
         Object object = method.invoke(moveAble, args);
