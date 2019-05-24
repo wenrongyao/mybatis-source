@@ -14,7 +14,8 @@ public class Test {
         try {
             statement = connection.createStatement();
             String sql = "select * from sys_role";
-            resultSet = statement.executeQuery(sql);
+            statement.execute(sql);
+            resultSet = statement.getResultSet();
             while (resultSet.next()) {
                 Integer sysRoleId = resultSet.getInt("sys_role_id");
                 String sysRoleName = resultSet.getString("role_name");
