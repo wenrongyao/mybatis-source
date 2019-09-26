@@ -6,6 +6,9 @@
         <id column="sys_role_id" property="sysRoleId" jdbcType="INTEGER"/>
         <result column="role_name" property="roleName" jdbcType="VARCHAR"/>
     </resultMap>
+    <update id="updateSysRole">
+        UPDATE sys_role set role_name = #{sysRole.roleName} where sys_role_id = #{sysRole.sysRoleId}
+    </update>
 
 
     <select id="selectById" resultMap="sysRoleMap">

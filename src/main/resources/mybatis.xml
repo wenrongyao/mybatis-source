@@ -6,6 +6,10 @@
 
     <properties resource="mysql.properties"/>
 
+    <plugins>
+        <plugin interceptor="com.honor.mybatis.interceptor.BaseFieldInterceptor"></plugin>
+    </plugins>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
