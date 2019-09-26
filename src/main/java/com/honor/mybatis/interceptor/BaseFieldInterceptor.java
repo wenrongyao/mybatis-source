@@ -21,25 +21,7 @@ import java.util.Properties;
 public class BaseFieldInterceptor implements Interceptor {
 
     public Object intercept(Invocation invocation) throws Throwable {
-//        Object[] args = invocation.getArgs();
-//        MappedStatement mappedStatement = (MappedStatement) args[0];
-//        String sqlCommandType = mappedStatement.getSqlCommandType().toString();
-//        BoundSql boundSql = mappedStatement.getBoundSql(args[1]);
-//        String sql = boundSql.getSql().toLowerCase();
-//        String newSql;
-//        if (sqlCommandType != null && sqlCommandType.equals("UPDATE")) {
-//            StringBuilder sb = new StringBuilder();
-//            sb.append(sql.substring(0, sql.indexOf("set") + 3));
-//            sb.append(" last_update_by = 1, last_update_time = sysdate(), ");
-//            sb.append(sql.substring(sql.indexOf("set") + 3));
-//            newSql = sb.toString();
-//            System.out.println(newSql);
-//
-//            //通过反射修改sql语句
-//            Field field = boundSql.getClass().getDeclaredField("sql");
-//            field.setAccessible(true);
-//            field.set(boundSql, newSql);
-//        }
+        System.out.println("拦截器拦截");
         Object result = invocation.proceed();
         return result;
     }
