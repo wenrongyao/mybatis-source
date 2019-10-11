@@ -14,4 +14,7 @@
     <select id="selectById" resultMap="sysRoleMap">
         SELECT * from sys_role where sys_role_id = #{id}
     </select>
+    <select id="selectPage" resultType="com.honor.mybatis.model.SysRole">
+        SELECT * from sys_role limit #{pageNum * pageSize}, pageSize
+    </select>
 </mapper>

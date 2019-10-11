@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by rongyaowen
@@ -27,6 +28,31 @@ public class Main {
             SysRoleMapper sysRoleMapper = sqlSession.getMapper(SysRoleMapper.class);
             SysRole sysRole = sysRoleMapper.selectById(1);
             System.out.println(sysRole);
+            sqlSession.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+
+                }
+            }
+        }
+    }
+
+    @Test
+    public void testSelectPage() {
+        InputStream inputStream = null;
+        try {
+            String resource = "mybatis.xml";
+            inputStream = Resources.getResourceAsStream(resource);
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            SysRoleMapper sysRoleMapper = sqlSession.getMapper(SysRoleMapper.class);
+            List<SysRole> sysRoleList = sysRoleMapper.selectPage(1, 2);
+            System.out.println(sysRoleList);
             sqlSession.close();
         } catch (IOException e) {
             e.printStackTrace();
